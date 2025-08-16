@@ -446,9 +446,12 @@
             margin-top: 3rem;
         }
 
-        .contact-info {
-            space-y: 2rem;
-        }
+.contact-info {
+    /* Add spacing between child elements if needed */
+}
+.contact-info > * + * {
+    margin-top: 2rem;
+}
 
         .contact-item {
             display: flex;
