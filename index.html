@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -113,15 +112,21 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(26, 26, 46, 0.7), rgba(196, 30, 58, 0.3)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23c41e3a" width="1200" height="800"/><path fill="%23d4af37" opacity="0.1" d="M0,400 Q300,200 600,400 T1200,400 L1200,800 L0,800 Z"/></svg>');
+            background: linear-gradient(rgba(26, 26, 46, 0.6), rgba(196, 30, 58, 0.4)), 
+                        url('./images/hero-bg.jpg');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
+        }
+
+        /* Fallback for hero if no image */
+        .hero.no-image {
+            background: linear-gradient(135deg, var(--deep-navy), var(--primary-red));
         }
 
         .hero-content {
@@ -264,7 +269,9 @@
 
         .about-image {
             height: 400px;
-            background: linear-gradient(135deg, var(--primary-red), var(--gold));
+            background-image: url('./images/culinary-artistry.jpg');
+            background-size: cover;
+            background-position: center;
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -272,6 +279,30 @@
             color: white;
             font-size: 1.2rem;
             position: relative;
+            overflow: hidden;
+        }
+
+        /* Overlay for about image text */
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(196, 30, 58, 0.7), rgba(212, 175, 55, 0.7));
+            z-index: 1;
+        }
+
+        .about-image span {
+            position: relative;
+            z-index: 2;
+            font-weight: 500;
+        }
+
+        /* Fallback for about image if no image */
+        .about-image.no-image {
+            background: linear-gradient(135deg, var(--primary-red), var(--gold));
         }
 
         /* Menu Preview */
@@ -295,6 +326,56 @@
             text-align: center;
             transition: all 0.3s ease;
             border: 1px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Background images for menu categories */
+        .menu-category.noodles {
+            background-image: url('./images/noodles-bg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .menu-category.sashimi {
+            background-image: url('./images/sashimi-bg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .menu-category.dimsum {
+            background-image: url('./images/dimsum-bg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .menu-category.wok {
+            background-image: url('./images/wok-bg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Overlay for menu category images */
+        .menu-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(26, 26, 46, 0.85);
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .menu-category:hover::before {
+            background: rgba(26, 26, 46, 0.75);
+        }
+
+        /* Ensure content appears above overlay */
+        .menu-category > * {
+            position: relative;
+            z-index: 2;
         }
 
         .menu-category:hover {
@@ -561,22 +642,22 @@
                 <h2 class="section-title" style="color: white;">Our Signature Collections</h2>
             </div>
             <div class="menu-grid">
-                <div class="menu-category">
+                <div class="menu-category noodles">
                     <div class="menu-icon">🍜</div>
                     <h3>Artisan Noodles</h3>
                     <p>Hand-pulled noodles crafted daily, served in rich broths perfected over generations.</p>
                 </div>
-                <div class="menu-category">
+                <div class="menu-category sashimi">
                     <div class="menu-icon">🍣</div>
                     <h3>Sashimi Selection</h3>
                     <p>Fresh fish flown in daily, expertly prepared by our master sushi craftsmen.</p>
                 </div>
-                <div class="menu-category">
+                <div class="menu-category dimsum">
                     <div class="menu-icon">🥟</div>
                     <h3>Dim Sum Delicacies</h3>
                     <p>Traditional steamed dumplings with modern interpretations of classic fillings.</p>
                 </div>
-                <div class="menu-category">
+                <div class="menu-category wok">
                     <div class="menu-icon">🍛</div>
                     <h3>Wok Specialties</h3>
                     <p>High-heat wok cooking techniques creating bold flavors and perfect textures.</p>
