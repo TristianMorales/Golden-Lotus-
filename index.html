@@ -112,8 +112,9 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(26, 26, 46, 0), rgba(196, 30, 58, 0)), 
-                        url('./images/hero-bg.jpg');
+            background: 
+                linear-gradient(rgba(26, 26, 46, 0.4), rgba(196, 30, 58, 0.3)), 
+                url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -124,15 +125,24 @@
             position: relative;
         }
 
-        /* Fallback for hero if no image */
-        .hero.no-image {
+        /* Fallback for hero if image fails to load */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background: linear-gradient(135deg, var(--deep-navy), var(--primary-red));
+            z-index: -1;
         }
 
         .hero-content {
             max-width: 800px;
             padding: 0 2rem;
             color: white;
+            position: relative;
+            z-index: 2;
         }
 
         .hero-subtitle {
@@ -151,6 +161,7 @@
             margin-bottom: 1.5rem;
             opacity: 0;
             animation: fadeInUp 1s ease 0.7s forwards;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .hero-description {
@@ -159,6 +170,7 @@
             margin-bottom: 2.5rem;
             opacity: 0;
             animation: fadeInUp 1s ease 0.9s forwards;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
 
         .cta-buttons {
@@ -269,7 +281,9 @@
 
         .about-image {
             height: 400px;
-            background-image: url('./images/culinary-artistry.jpg');
+            background: 
+                linear-gradient(135deg, rgba(196, 30, 58, 0.3), rgba(212, 175, 55, 0.6)),
+                url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
             background-size: cover;
             background-position: center;
             border-radius: 10px;
@@ -282,27 +296,11 @@
             overflow: hidden;
         }
 
-        /* Overlay for about image text */
-        .about-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(196, 30, 58, 0.151), rgba(212, 175, 55, 0.7));
-            z-index: 1;
-        }
-
         .about-image span {
             position: relative;
             z-index: 2;
             font-weight: 500;
-        }
-
-        /* Fallback for about image if no image */
-        .about-image.no-image {
-            background: linear-gradient(135deg, var(--primary-red), var(--gold));
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
         }
 
         /* Menu Preview */
@@ -332,55 +330,39 @@
 
         /* Background images for menu categories */
         .menu-category.noodles {
-            background-image: url('./images/noodles-bg.jpg');
+            background: 
+                linear-gradient(rgba(26, 26, 46, 0.7), rgba(26, 26, 46, 0.7)),
+                url('https://images.unsplash.com/photo-1569718212165-3a8278d5f624?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
             background-size: cover;
             background-position: center;
         }
 
         .menu-category.sashimi {
-            background-image: url('./images/sashimi-bg.jpg');
+            background: 
+                linear-gradient(rgba(26, 26, 46, 0.7), rgba(26, 26, 46, 0.7)),
+                url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
             background-size: cover;
             background-position: center;
         }
 
         .menu-category.dimsum {
-            background-image: url('./images/dimsum-bg.jpg');
+            background: 
+                linear-gradient(rgba(26, 26, 46, 0.7), rgba(26, 26, 46, 0.7)),
+                url('https://images.unsplash.com/photo-1496116218417-1a781b1c416c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
             background-size: cover;
             background-position: center;
         }
 
         .menu-category.wok {
-            background-image: url('./images/wok-bg.jpg');
+            background: 
+                linear-gradient(rgba(26, 26, 46, 0.7), rgba(26, 26, 46, 0.7)),
+                url('https://images.unsplash.com/photo-1512003867696-6d5ce6835040?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
             background-size: cover;
             background-position: center;
         }
 
-        /* Overlay for menu category images */
-        .menu-category::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(26, 26, 46, 0.235);
-            z-index: 1;
-            transition: all 0.3s ease;
-        }
-
-        .menu-category:hover::before {
-            background: rgba(26, 26, 46, 0.217);
-        }
-
-        /* Ensure content appears above overlay */
-        .menu-category > * {
-            position: relative;
-            z-index: 2;
-        }
-
         .menu-category:hover {
             transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.08);
             border-color: var(--gold);
         }
 
@@ -446,9 +428,9 @@
             margin-top: 3rem;
         }
 
-.contact-info > * + * {
-    margin-top: 2rem;
-}
+        .contact-info > * + * {
+            margin-top: 2rem;
+        }
 
         .contact-item {
             display: flex;
