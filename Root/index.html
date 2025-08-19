@@ -363,13 +363,13 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(26, 26, 46, 0.85);
+            background: rgba(26, 26, 46, 0.235);
             z-index: 1;
             transition: all 0.3s ease;
         }
 
         .menu-category:hover::before {
-            background: rgba(26, 26, 46, 0.75);
+            background: rgba(26, 26, 46, 0.217);
         }
 
         /* Ensure content appears above overlay */
@@ -446,9 +446,9 @@
             margin-top: 3rem;
         }
 
-        .contact-info {
-            space-y: 2rem;
-        }
+.contact-info > * + * {
+    margin-top: 2rem;
+}
 
         .contact-item {
             display: flex;
