@@ -33,16 +33,17 @@
         }
 
         /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1rem 0;
-            background: rgba(26, 26, 46, 0.7);
-            backdrop-filter: blur(15px);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1rem 0;
+    background: rgba(255, 255, 255, 0.1); /* Very light transparent overlay */
+    backdrop-filter: blur(10px);          /* Blurred background */
+    -webkit-backdrop-filter: blur(10px);  /* Safari support */
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
 
         .nav-container {
             max-width: 1200px;
